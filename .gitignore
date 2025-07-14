@@ -1,0 +1,52 @@
+# Node modules (anywhere)
+**/node_modules/
+
+# Logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# dotenv environment variables
+**/.env
+**/.env.*.local
+
+# Build output
+**/dist/
+**/build/
+
+# IDE files
+**/.vscode/
+**/.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+**/.DS_Store
+**/Thumbs.db
+
+# Coverage reports
+**/coverage/
+
+# MongoDB dump files
+**/dump/
+
+# Runtime data
+**/pids/
+**/*.pid
+**/*.seed
+
+# Logs (custom)
+**/logs/
+**/*.log
+
+# React-specific (client)
+**/client/.next/
+**/client/.parcel-cache/
+**/client/.turbo/
+**/client/node_modules/
+**/client/build/
+
+# Optional: ignore uploads or temp directories
+**/uploads/
+**/tmp/
