@@ -105,3 +105,41 @@ export function logout(req, res) {
     res.clearCookie("jwt")
     res.status(200).json({ success: true, message: "Logout successful" })
 }
+
+export async function onboard(req, res) {
+    // protected route is sending middleware and we get req.user 
+    // req.user is not there in login, sigup, or any other which is not passed after middleware
+    try {
+        const userId = req.user._id
+        const { fullName, bio, nativeLanguage, learningLanguage, location } = req.body
+        if (!fullName || !bio || !nativeLanguage || !learningLanguage || !location) {
+            return res.status(400).json({
+                message: "All fields are required",
+                missingFields: [
+                    !fullName && "fullName",
+                    !bio && "bio",
+                    !nativeLanguage && "nativeLanguage",
+                    !learningLanguage && "learningLanguage",
+                    !location && "location",
+                ].filter(Boolean),
+            })
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            ...req.body,
+            isOnboarded: true,
+        }, { new: true })
+        // new:true gives the user after the update was applied (otherwise undefined -> gives old user)
+
+        if (!updatedUser) return res.status(404).json({ message: "User not found" })
+
+
+        // TODO : Update the user in stream service
+
+
+        return res.status(200).json({ success: true, user: updatedUser })
+    } catch (error) {
+        console.log("Onboarding error: ", error)
+        res.status(500).json({ message: "Internal server error" })
+    }
+}
