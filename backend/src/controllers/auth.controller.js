@@ -100,6 +100,10 @@ export async function login(req, res) {
     }
 }
 
+export async function checkIfLoggedIn(req, res) {
+    res.status(200).json({ success: true, user: req.user })
+}
+
 export function logout(req, res) {
     // clear the JWT token cookies
     res.clearCookie("jwt")
@@ -134,7 +138,16 @@ export async function onboard(req, res) {
         if (!updatedUser) return res.status(404).json({ message: "User not found" })
 
 
-        // TODO : Update the user in stream service
+        try {
+            await upsertStreamUser({
+                id: updatedUser._id.toString(),
+                name: updatedUser.fullName,
+                image: updatedUser.profilePic || "",
+            })
+            console.log(`Stream user updated after onboarding for ${updatedUser.fullName}`)
+        } catch (streamError) {
+            console.log("Error updating stream user during onboarding: ", streamError.message)
+        }
 
 
         return res.status(200).json({ success: true, user: updatedUser })
