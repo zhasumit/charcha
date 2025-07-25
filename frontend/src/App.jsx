@@ -6,14 +6,27 @@ import NotificationsPage from './pages/NotificationsPage'
 import CallPage from './pages/CallPage'
 import ChatPage from './pages/ChatPage'
 import OnboardingPage from './pages/OnboardingPage'
-import toast, { Toaster } from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
+import { useQuery } from '@tanstack/react-query'
+import axios from "axios"
+import { axiosInstance } from './lib/axios'
 
-
+// axios will be for talking to the backend 
+// tenstack query will fetch the data (get) and delete (put, patch, delete) requests
 const App = () => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["todos"],
+    queryFn: async () => {
+      const res = await axiosInstance.get("/auth/me")
+      return res.data
+    },
+    retry: false // auth check
+  })
+
+  console.log({ data })
   return (
     <>
       <div className='h-screen' data-theme="sunset">
-        {/* <button onClick={() => toast.success("Hello world")}>create a toast</button> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/signup' element={<SignUpPage />} />
@@ -24,7 +37,7 @@ const App = () => {
           <Route path='/onboarding' element={<OnboardingPage />} />
         </Routes>
 
-        <Toaster/>
+        <Toaster />
       </div>
     </>
   )
