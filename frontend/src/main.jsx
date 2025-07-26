@@ -7,6 +7,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
 
+// axios will be for talking to the backend 
+// tenstack query will fetch the data (get) and delete (put, patch, delete) requests
+// query is for fetching the data using the axiosInstance which is made in the lib
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
