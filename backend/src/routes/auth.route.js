@@ -7,6 +7,7 @@ const router = express.Router();
 // for getting new user, getting Token for user, removing token of user
 router.post("/signup", signup)
 router.post("/login", login)
+// This would be used in the app.jsx for redirections if the user is not authenticated 
 router.get("/me", protectRoute, checkIfLoggedIn)
 router.post("/logout", logout)
 

@@ -3,3 +3,12 @@
 @plugin "daisyui" {
     themes: all;
 }
+
+body {
+    font-family: 'Figtree', sans-serif;
+}
+
+code,
+pre {
+    font-family: 'Geist Mono', monospace;
+}
