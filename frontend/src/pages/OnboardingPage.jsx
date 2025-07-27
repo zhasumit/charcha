@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { completeOnboarding } from '../lib/api';
 import { CameraIcon, Loader, MapPin, Rabbit, ShuffleIcon } from 'lucide-react';
 import { LANGUAGES } from "../constants";
+import { customToast } from '../lib/customToast.jsx';
 
 const OnboardingPage = () => {
     const { authUser } = useAuthUser()
@@ -22,10 +23,10 @@ const OnboardingPage = () => {
     const { mutate: onboardingMutation, isPending } = useMutation({
         mutationFn: completeOnboarding,
         onSuccess: () => {
-            toast.success("Profile onboarded successfully")
+            customToast.success("Profile onboarded successfully")
             queryClient.invalidateQueries({ queryKey: ["authUser"] })
         },
-        onError: (error) => { toast.error(error.response.data.message) }
+        onError: (error) => { customToast.error(error.response.data.message) }
     })
 
     const handleSubmit = (e) => {
@@ -38,7 +39,7 @@ const OnboardingPage = () => {
         const randomAvatar = `https://avatar.iran.liara.run/public/${index}.png`;
         // get a random number between 1-100 and put that in the dynamic api to get a profile pic
         setFormState({ ...formState, profilePic: randomAvatar });
-        toast.success("Random profile picture generated!");
+        customToast.success("Random profile picture generated!");
     }
 
     return (

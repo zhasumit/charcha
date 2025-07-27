@@ -21,12 +21,13 @@ const App = () => {
   return (
     <>
       <div className='h-screen' data-theme="dark">
+        <Toaster position="top-right" />
         <Routes>
           <Route path='/'
             element=
             {isAuthenticated && isOnboarded ?
               (<HomePage />) :  // go to the home page if authenticated and onboarded
-              (<Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />) 
+              (<Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />)
             } />
 
           <Route path="/signup"
@@ -55,7 +56,6 @@ const App = () => {
           />
         </Routes>
 
-        <Toaster />
       </div>
     </>
   )
