@@ -1,9 +1,8 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight, Loader2, Rabbit, Siren } from "lucide-react";
 import { Link } from "react-router";
+import useSignup from '../hooks/useSignup'
 import LanguagePartnersIllustration from "../components/icons/LanguagePartnersIllustration";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { signup } from "../lib/api";
 
 const SignUpPage = () => {
     const [signupData, setSignupData] = useState({
@@ -12,14 +11,7 @@ const SignUpPage = () => {
         password: "",
     });
 
-    // queryCLient is from the app.jsx and sending and getting the authUser using mutation 
-    const queryClient = useQueryClient();
-    const { mutate: signupMutation, isPending, error } = useMutation({
-        mutationFn: signup,
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-        // refetch the query in the app.jsx with the queryKey as authUser
-    })
-
+    const { isPending, error, signupMutation } = useSignup()
 
     const handleSignup = (e) => {
         e.preventDefault(); // screen is not refreshed 
