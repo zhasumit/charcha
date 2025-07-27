@@ -33,10 +33,10 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-base-200 border-b border-base-300 sticky top-0 z-30 h-16 flex items-center shadow-md">
+            <nav className="border-b border-base-300 sticky top-0 z-30 h-16 flex items-center shadow-xs">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-full">
                     {/* Logo Section */}
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-2">
                         {isChatPage && (
                             <>
                                 <Rabbit className="w-7 h-7 text-primary transition-transform duration-300 hover:scale-110" />
@@ -48,9 +48,9 @@ const Navbar = () => {
                     </div>
 
                     {/* Right controls */}
-                    <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="flex items-center gap-3 sm:gap-2">
                         {/* Avatar */}
-                        <div className="avatar cursor-pointer transition-transform duration-200 hover:scale-105">
+                        <div className="avatar cursor-pointer transition-transform duration-200 hover:scale-105 pr-4">
                             <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-sm">
                                 <img
                                     src={authUser?.profilePic}
@@ -89,8 +89,8 @@ const Navbar = () => {
             {/* Inline Minimal Confirmation Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
-                    <div className="backdrop-blur-sm bg-white/80 dark:bg-base-100/80 border border-gray-300 dark:border-gray-700 p-4 rounded-lg shadow-md w-[260px] text-center">
-                        <p className="mb-3 text-sm font-medium text-gray-800 dark:text-gray-100">
+                    <div className="backdrop-blur-sm bg-base-100/90 border border-base-content/10 p-4 rounded-lg shadow-md w-[260px] text-center">
+                        <p className="mb-3 text-sm font-medium text-base-content">
                             Are you sure you want to logout?
                         </p>
                         <div className="flex justify-center gap-3 mt-2">
@@ -112,6 +112,7 @@ const Navbar = () => {
                     </div>
                 </div>
             )}
+
         </>
     );
 };

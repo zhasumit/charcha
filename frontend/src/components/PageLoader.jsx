@@ -33,6 +33,25 @@ const PageLoader = ({
     return () => document.head.removeChild(style);
   }, [size]);
 
+  // Apply `data-theme` on <html> during loading
+  useEffect(() => {
+    if (!loading) return;
+
+    const originalTheme = document.documentElement.getAttribute("data-theme");
+
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    return () => {
+      if (originalTheme) {
+        document.documentElement.setAttribute("data-theme", originalTheme);
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    };
+  }, [loading, theme]);
+
   if (!loading) return null;
 
   const pacmanStyle = (top) => ({
@@ -66,10 +85,10 @@ const PageLoader = ({
     <div
       className="flex items-center justify-center h-screen w-screen"
       style={{ transform: "translateX(-4%)" }}
+      {...props}
     >
       <span
         className={className}
-        data-theme={theme}
         style={{
           display: "inline-block",
           position: "relative",
@@ -78,7 +97,6 @@ const PageLoader = ({
           width: `${size * 2}px`,
           color: "currentColor",
         }}
-        {...props}
       >
         <span style={pacmanStyle(true)} />
         <span style={pacmanStyle(false)} />
@@ -87,7 +105,6 @@ const PageLoader = ({
         ))}
       </span>
     </div>
-
   );
 };
 
