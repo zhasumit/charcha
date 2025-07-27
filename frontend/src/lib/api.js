@@ -8,11 +8,20 @@ export const signup = async (signupData) => {
 export const login = async (loginData) => {
     const res = await axiosInstance.post('/auth/login', loginData)
     return res.data;
-}   
+}
+
+export const logout = async () => {
+    const res = await axiosInstance.post('/auth/logout')
+    return res.data;
+}
 
 export const getAuthUser = async () => {
-    const res = await axiosInstance.get("/auth/me")
-    return res.data
+    try {
+        const res = await axiosInstance.get("/auth/me")
+        return res.data
+    } catch {
+        return null
+    }
 }
 
 export const completeOnboarding = async (userData) => {

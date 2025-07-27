@@ -13,7 +13,7 @@ const toastStyles = {
         bg: "bg-green-100",
         text: "text-green-800",
         border: "border-green-300",
-        progress: "bg-green-400/50",
+        progress: "bg-green-600/50",
         closeIconColor: "text-green-600",
     },
     error: {
@@ -21,7 +21,7 @@ const toastStyles = {
         bg: "bg-red-100",
         text: "text-red-800",
         border: "border-red-300",
-        progress: "bg-red-400/50",
+        progress: "bg-red-600/50",
         closeIconColor: "text-red-600",
     },
     info: {
@@ -29,15 +29,15 @@ const toastStyles = {
         bg: "bg-blue-100",
         text: "text-blue-800",
         border: "border-blue-300",
-        progress: "bg-blue-400/50",
+        progress: "bg-blue-600/50",
         closeIconColor: "text-blue-600",
     },
     warning: {
-        icon: <FlameKindling className="w-5 h-5 text-yellow-600" />,
+        icon: <FlameKindling className="w-5 h-5 text-yellow-700" />,
         bg: "bg-yellow-100",
         text: "text-yellow-800",
         border: "border-yellow-300",
-        progress: "bg-yellow-400/50",
+        progress: "bg-yellow-600/70",
         closeIconColor: "text-yellow-600",
     },
 }
