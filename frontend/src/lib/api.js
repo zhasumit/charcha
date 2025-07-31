@@ -39,12 +39,12 @@ export async function getRecommendedUsers() {
     return res.data
 }
 
-export async function getOutgoingFriendRequests() {
+export async function getOutgoingFriendReqs() {
     const res = await axiosInstance.get("/users/outgoing-friend-requests")
     return res.data
 }
 
 export async function sendFriendRequest(recipientId) {
-    const res = await axiosInstance.post(`/users/friend-request/${recipientId}`, )
+    const res = await axiosInstance.post(`/users/friend-request/${recipientId}`)
     return res.data
 }
