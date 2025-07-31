@@ -39,10 +39,12 @@ const Navbar = () => {
                     <div className="flex items-center gap-2">
                         {isChatPage && (
                             <>
-                                <Rabbit className="w-7 h-7 text-primary transition-transform duration-300 hover:scale-110" />
-                                <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider select-none">
-                                    Charcha
-                                </span>
+                                <Link to="/" className="flex gap-1">
+                                    <Rabbit className="w-7 h-7 text-primary transition-transform duration-300 hover:scale-110" />
+                                    <span className="text-2xl font-semibold tracking-tight">
+                                        Charcha
+                                    </span>
+                                </Link>
                             </>
                         )}
                     </div>
