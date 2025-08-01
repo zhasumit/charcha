@@ -13,12 +13,11 @@ pre {
     font-family: 'Geist Mono', monospace;
 }
 
-
 .str-chat__channel {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #c9e8c9, #b7e7bb);
+    background: hsl(var(--b2));
     height: 100%;
 }
 
@@ -28,12 +27,14 @@ pre {
     height: 90% !important;
     margin: 0 auto !important;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px hsl(var(--bc) / 0.1);
     overflow: hidden;
+    background: hsl(var(--b1));
 }
 
 .str-chat__list {
-    background-color: #ffffff;
+    background-color: hsl(var(--b1));
+    color: hsl(var(--bc));
     padding: 12px;
 }
 
@@ -42,5 +43,67 @@ pre {
 }
 
 .str-chat__message-input {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid hsl(var(--bc) / 0.2);
+    background: hsl(var(--b1));
+}
+
+.str-chat__message-simple {
+    color: hsl(var(--bc));
+}
+
+.str-chat__message-text {
+    color: hsl(var(--bc));
+}
+
+.str-chat__channel-header {
+    background: hsl(var(--b1));
+    color: hsl(var(--bc));
+    border-bottom: 1px solid hsl(var(--bc) / 0.1);
+}
+
+.str-chat__input {
+    background: hsl(var(--b1));
+    color: hsl(var(--bc));
+}
+
+.str-chat__textarea {
+    background: hsl(var(--b1));
+    color: hsl(var(--bc));
+}
+
+.str-chat__message--me .str-chat__message-text-inner {
+    background: hsl(var(--p) / 0.9) !important;
+    color: hsl(var(--pc)) !important;
+    box-shadow: 0 2px 8px hsl(var(--p) / 0.3);
+    border: 1px solid hsl(var(--p) / 0.2);
+}
+
+.str-chat__message--other .str-chat__message-text-inner {
+    background: hsl(var(--n) / 0.8) !important;
+    color: hsl(var(--nc)) !important;
+    box-shadow: 0 2px 8px hsl(var(--bc) / 0.15);
+    border: 1px solid hsl(var(--bc) / 0.1);
+}
+
+.str-chat__message {
+    background: hsl(var(--b1)) !important;
+}
+
+.str-chat__message-wrapper {
+    background: hsl(var(--b1)) !important;
+}
+
+.str-chat__message-sender-name {
+    color: hsl(var(--p)) !important;
+    font-weight: 600 !important;
+}
+
+.str-chat__message-data {
+    color: hsl(var(--bc) / 0.6) !important;
+}
+
+.str-chat__thread {
+    background: hsl(var(--b1));
+    color: hsl(var(--bc));
+    border-left: 1px solid hsl(var(--bc) / 0.1);
 }

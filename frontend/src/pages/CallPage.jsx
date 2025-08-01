@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import useAuthUser from '../hooks/useAuthUser';
 import { getStreamToken } from '../lib/api';
 import { useNavigate, useParams } from 'react-router';
@@ -34,8 +34,7 @@ const CallPage = () => {
 
     useEffect(() => {
         const initCall = async () => {
-            if (!tokenData.token || !authUser || !callId) return;
-
+            if (!tokenData?.token || !authUser || !callId) return;
             try {
                 // make the instance of the user and the client to make callInstance
                 const user = {
@@ -53,7 +52,7 @@ const CallPage = () => {
                 const callInstance = videoClient.call("default", callId);
                 await callInstance.join({ create: true });
                 console.log("Joined call successfully");
-                // customToast.success(`Call Started with ${callInstance.participants.length} participants`);
+                customToast.success(`Call Started!!!`);
 
                 setClient(videoClient);
                 setCall(callInstance);
@@ -70,8 +69,8 @@ const CallPage = () => {
     if (isLoading || isConnecting) return <PageLoader />;
 
     return (
-        <div className="h-screen flex flex-col items-center justify-center">
-            <div className="relative">
+        <div className="h-screen flex flex-col items-center justify-center bg-base-200">
+            <div className="relative w-full max-w-4xl">
                 {client && call ? (
                     <StreamVideo client={client}>
                         <StreamCall call={call}>
@@ -79,7 +78,7 @@ const CallPage = () => {
                         </StreamCall>
                     </StreamVideo>
                 ) : (
-                    <div className="flex items-center justify-center h-full">
+                    <div className="flex items-center justify-center h-full text-error">
                         <p>Could not initialize call. Please refresh or try again later.</p>
                     </div>
                 )}
@@ -98,8 +97,10 @@ const CallContent = () => {
 
     return (
         <StreamTheme>
-            <SpeakerLayout />
-            <CallControls />
+            <div className="str-chat__container bg-base-100 shadow-lg rounded-lg overflow-hidden">
+                <SpeakerLayout />
+            </div>
+            <CallControls className="bg-base-200 p-4" />
         </StreamTheme>
     );
 };
