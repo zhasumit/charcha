@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowUpRight, Loader2, Rabbit, Siren } from "lucide-react";
 import { Link } from "react-router";
 import useSignup from '../hooks/useSignup'
+import { useThemeStore } from '../store/useThemeStore'
 import LanguagePartnersIllustration from "../components/icons/LanguagePartnersIllustration";
 
 const SignUpPage = () => {
